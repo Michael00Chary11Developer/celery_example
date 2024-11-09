@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-79bu!r6a#rp)fh$gsph6rkb!!y&w_h-yzqeq9rxvt8bqhpe%4a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -123,3 +123,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CELERY_BROKER_URL = 'redis://localhost:8080'
+CELERY_BACKEND_RESULT = CELERY_BROKER_URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TASK_TRACK_START = True
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
